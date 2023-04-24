@@ -1,3 +1,3 @@
-# node-ts-template
+# ice-calculator
 
-node.js で TypeScript を使うためのテンプレート
+パーサ作りの練習
