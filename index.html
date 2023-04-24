@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ice-calculator</title>
+    <style>
+      body {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 10px;
+      }
+      input {
+        width: calc(100% - 4px);
+        padding: 0;
+      }
+      #exp,
+      #answer {
+        font-size: 32px;
+      }
+      button {
+        display: block;
+        width: 100%;
+        height: 40px;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>あいす計算機</h1>
+    <label>
+      計算式:<br />
+      <input type="text" id="exp" />
+    </label>
+    <button id="calcButton">計算</button>
+
+    <h2>答え</h2>
+    <p id="answer">-</p>
+
+    <a href="https://github.com/avaice/ice-calculator">ソースコード</a>
+
+    <script>
+      const clickCalc = () => {
+        const ansDOM = document.getElementById("answer")
+        try {
+          const ans = parseAndCalc(document.getElementById("exp").value)
+          ansDOM.innerText = ans
+        } catch (e) {
+          alert(e)
+          ansDOM.innerText = "E"
+        }
+      }
+      window.onload = () => {
+        const calcButton = document.getElementById("calcButton")
+        if (calcButton) {
+          calcButton.addEventListener("click", clickCalc)
+        }
+      }
+    </script>
+    <script src="./dist/bundle.js" defer></script>
+  </body>
+</html>
