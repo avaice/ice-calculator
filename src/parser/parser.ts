@@ -10,7 +10,11 @@ export const parse = (v: string): string[] => {
     if (
       isNaN(Number(value[i])) &&
       value[i] !== "." &&
-      !(value[i] === "-" && i === 0)
+      !(
+        value[i] === "-" &&
+        i + 1 !== value.length &&
+        !isNaN(Number(value[i + 1]))
+      )
     ) {
       parsed.push(value[i])
     } else {
@@ -25,5 +29,6 @@ export const parse = (v: string): string[] => {
       }
     }
   }
+  console.log(parsed)
   return parsed
 }
